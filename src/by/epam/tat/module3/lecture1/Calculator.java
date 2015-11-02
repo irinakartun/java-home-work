@@ -4,28 +4,35 @@ import java.util.Scanner;
 
 public class Calculator {
 
-	public static float sum(float x, float y) { // operation of sum
+	private static float sum(float x, float y) { // operation of sum
 		return x + y;
 	}
 
-	public static float min(float x, float y) { // operation of minus
+	private static float min(float x, float y) { // operation of minus
 		return x - y;
 	}
 
-	public static float mult(float x, float y) { // operation of multiplication
+	private static float mult(float x, float y) { // operation of multiplication
 		return x * y;
 	}
 
-	public static float div(float x, float y) { // operation of division
+	private static float div(float x, float y) {// operation of division
+		if (y == 0){
+			System.out.println("It's forbidden to divide into 0!");
+			return 0;
+		}
 		return x / y;
 	}
 
-	public static void select_and_calculate(float a, float b) { // method of
-																// operator
-																// selection
-																// that calls
-																// one of the
-																// above method
+	private static void select_and_calculate(float a, float b) { // method of
+																	// operator
+																	// selection
+																	// that
+																	// calls
+																	// one of
+																	// the
+																	// above
+																	// method
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("\nSelect preferable operation from the list:");
 		System.out.println("-Sum" + "\n" + "-Min" + "\n" + "-Mult" + "\n"
@@ -54,7 +61,7 @@ public class Calculator {
 		System.out.println(result);
 	}
 
-	public static void main(String[] args) {
+	public static void executeCalculation() {
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -74,10 +81,9 @@ public class Calculator {
 		System.out.println("\nWould you like to continue? Y/N");
 		String answer = scanner.nextLine().toLowerCase();
 		if (answer.equals("y")) {
-			main(args); // call main function recursively if user wants to
-						// continue with calculation
-		} else {
-			System.exit(0); // otherwise, terminate the program
+			executeCalculation(); // call main function recursively if user
+									// wants to
+			// continue with calculation
 		}
 	}
 
